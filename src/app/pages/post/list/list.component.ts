@@ -17,6 +17,7 @@ export class ListComponent implements OnInit {
   ) {
     this.postList = this.activatedRoute.snapshot.data.posts;
 
+    /// Generate array with pages
     let pages = Math.round(this.postList.length / 10);
     const mod = this.postList.length % 10;
     if (mod > 0) {

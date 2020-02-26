@@ -11,12 +11,18 @@ export class DetailResolver implements Resolve<any>  {
     private proxyServ: ProxyService
   ) { }
 
+  /**
+   * Resolve HTTP request before loading component
+   * @param route ActivatedRouteSnapshot
+   */
   resolve(route: ActivatedRouteSnapshot) {
     return new Promise<any>(async (resolve) => {
       const postId = route.params.id;
 
-      const response: any = await this.proxyServ.get(`/posts/${postId}`);
-      resolve(response);
+      const post: any = await this.proxyServ.get(`/posts/${postId}`);
+      post.comments = await this.proxyServ.get(`/posts/${postId}/comments`);
+
+      resolve(post);
     });
   }
 }

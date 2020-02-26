@@ -1,0 +1,12 @@
+<div id="post-comment-component" class="card" [attr.data-id]="comment.id">
+  <h3>
+    {{ comment.name }}
+    <small>{{ comment.email }}</small>
+  </h3>
+
+  <p>
+    {{ comment.body }}
+    <br><br>
+    <button type="button" (click)="emitDate($event)">Emitir fecha</button>
+  </p>
+</div>

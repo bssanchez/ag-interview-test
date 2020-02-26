@@ -12,44 +12,13 @@
     <hr>
 
     <div class="comments-container">
-      <h2>Comentarios</h2>
+      <h2>
+        Comentarios
+        <small *ngIf="showDate !== null">{{ showDate }}</small>
+      </h2>
 
-      <div class="card">
-        <h3>
-          Roberto
-          <small>roberto@lol.com</small>
-        </h3>
-
-        <p>
-          asdasdasdasdasdasdasdasdas asd asd asd
-          <br><br>
-          <button type="button">Emitir fecha</button>
-        </p>
-      </div>
-      <div class="card">
-        <h3>
-          Roberto
-          <small>roberto@lol.com</small>
-        </h3>
-
-        <p>
-          asdasdasdasdasdasdasdasdas asd asd asd
-          <br><br>
-          <button type="button">Emitir fecha</button>
-        </p>
-      </div>
-      <div class="card">
-        <h3>
-          Roberto
-          <small>roberto@lol.com</small>
-        </h3>
-
-        <p>
-          asdasdasdasdasdasdasdasdas asd asd asd
-          <br><br>
-          <button type="button">Emitir fecha</button>
-        </p>
-      </div>
+      <app-post-comment *ngFor="let comment of post.comments" [comment]="comment"
+        (clickEmitButton)="onDateEmitted($event)"></app-post-comment>
     </div>
   </div>
 </section>

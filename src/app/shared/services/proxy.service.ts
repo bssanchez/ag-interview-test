@@ -46,29 +46,4 @@ export class ProxyService {
       );
     });
   }
-
-  /**
-   * HTTP POST Petition to API
-   *
-   * @param formData Data to send in JSON||FormData format
-   * @param endpoint Route endpoint to query
-   */
-  public post<T>(endpoint: string, formData: any = null): Promise<T> {
-    return new Promise<T>(async (resolve, reject) => {
-      let actionUrl = this.actionUrl;
-      if (endpoint !== null) {
-        actionUrl += endpoint;
-      }
-
-      this.http.post<T>(actionUrl, formData, this.httpOptions).pipe(
-        retry(1)
-      ).subscribe(
-        (response) => {
-          resolve(response);
-        }, (error) => {
-          resolve(error.error !== undefined ? error.error : error);
-        }
-      );
-    });
-  }
 }
