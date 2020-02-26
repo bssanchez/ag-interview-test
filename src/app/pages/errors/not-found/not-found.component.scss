@@ -1,0 +1,20 @@
+#error-404 {
+  .container {
+    img {
+      max-width: 100%;
+      max-height: 70vh;
+    }
+
+    h1 {
+      color: var(--color-warning);
+    }
+
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+
+    text-align: center;
+    padding-top: 0;
+  }
+}

@@ -1,10 +1,13 @@
 <section id="post-detail-page">
   <div class="container">
-    <h1>Publicación #{{ id }}</h1>
+    <div class="card">
+      <h1>
+        {{ post.title }}
+        <small>publicación #{{ id }}</small>
+      </h1>
 
-
-    <h2>title</h2>
-    <p>body</p>
+      <p>{{ post.body }}</p>
+    </div>
 
     <div class="comments-container">
 
