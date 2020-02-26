@@ -13,15 +13,31 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let post of postList">
-            <td>{{ post }}</td>
-            <td>Lorem ipsum</td>
+          <tr *ngFor="let post of postList | paginate : page">
+            <td>{{ post.id }}</td>
+            <td>{{ post.title }}</td>
             <td>
-              <a routerLink="/post/detail/1">Ver</a>
+              <a [routerLink]="['/post/detail', post.id]">Ver</a>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
+
+    <ul class="pagination">
+      <li>
+        <button type="button" (click)="page = page > 0 ? page - 1 : page">
+          &laquo;
+        </button>
+      </li>
+      <li *ngFor="let p of pages">
+        <button [class.active]="p === page" type="button" (click)="page = p">{{ p + 1 }}</button>
+      </li>
+      <li>
+        <button type="button" (click)="page = page < (pages.length - 1) ? page + 1 : page">
+          &raquo;
+        </button>
+      </li>
+    </ul>
   </div>
 </section>

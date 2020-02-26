@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
@@ -7,18 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailComponent implements OnInit {
 
-  public id: number = null;
-  public post: any = {
-    userId: 1,
-    id: 1,
-    title: 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit',
-    body: 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto'
-  };
+  public id: string = null;
+  public post: any = null;
 
-  constructor() { }
+  constructor(
+    private activatedRoute: ActivatedRoute
+  ) {
+    this.post = this.activatedRoute.snapshot.data.post;
 
-  ngOnInit() {
-    this.id = 1;
+    this.activatedRoute.paramMap.subscribe(params => {
+      this.id = params.get('id');
+    });
   }
+
+  ngOnInit() { }
 
 }

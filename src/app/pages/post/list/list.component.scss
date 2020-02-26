@@ -51,4 +51,27 @@
     width: 100%;
     overflow-x: auto;
   }
+
+  .pagination {
+    li {
+      button {
+        &.active {
+          background: var(--color-primary);
+          pointer-events: none;
+        }
+
+        background: var(--color-light);
+        border: none;
+        width: 20px;
+        cursor: pointer;
+      }
+
+      margin-right: 10px;
+      display: inline-block;
+    }
+
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+  }
 }

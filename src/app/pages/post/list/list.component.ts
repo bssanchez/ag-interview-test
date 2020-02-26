@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -8,11 +9,25 @@ import { Component, OnInit } from '@angular/core';
 export class ListComponent implements OnInit {
 
   public postList: any = [];
+  public page = 0;
+  public pages = [];
 
-  constructor() { }
+  constructor(
+    private activatedRoute: ActivatedRoute
+  ) {
+    this.postList = this.activatedRoute.snapshot.data.posts;
 
-  ngOnInit() {
-    this.postList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    let pages = Math.round(this.postList.length / 10);
+    const mod = this.postList.length % 10;
+    if (mod > 0) {
+      pages++;
+    }
+
+    for (let i = 0; i < pages; i++) {
+      this.pages.push(i);
+    }
   }
+
+  ngOnInit() { }
 
 }
